@@ -24,10 +24,13 @@ def get_Document ( idx ):
       pass
 
 def variator ( start, end ):
+  counter=0
   for idx in xrange( start, end+1 ):
     doc = get_Document( idx )
+    counter+=1
     if (doc != 0):
       print doc
+  print "Finished for range of "+ str(start) + " - " + str(end) 
 
 class myThread (Thread):
     def __init__(self, begin, end):
@@ -35,7 +38,7 @@ class myThread (Thread):
         self.end=end
         Thread.__init__(self )
     def run(self):
-        print "Start: "  + str(self.begin) + " End: " + str(self.end)
+        print "Start: "  + str(self.begin) + " End: " + str(self.end) + "\n"
        # Get lock to synchronize threads
        #threadLock.acquire()
         variator( self.begin, self.end )
@@ -55,10 +58,10 @@ for thread_id in xrange( 1,  num_threads+1 ):
  
 for thrd in th_array:
   thrd.start()
-alive="true"
+#alive="true"
 #while (alive):
 #  alive='false'
 #  for thrd in th_array:
 #    if (thrd.isAlive):
 #      alive="true"
-print "done"
+print "\ndone"
